@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from "react";
-import Calendar from "@/components/Calender";
+import MonthView from "@/components/MonthView";
 import ViewSwitcher from "@/components/ViewSwitcher";
-import CalendarWeek from "@/components/CalendarWeek";
+import WeekView from "@/components/WeekView";
 import WeekNavigator from "@/components/WeekNavigator";
 import MonthNavigator from "@/components/MonthNavigator";
 import DayNavigator from "@/components/DayNavigator";
+import DayView from "@/components/DayView";
 
 export default function Homepage() {
   const [view, setView] = useState<'month' | 'week' | 'day'>('month');
@@ -19,24 +20,21 @@ export default function Homepage() {
       {view === 'month' && (
         <>
           <MonthNavigator currentDate={currentDate} setCurrentDate={setCurrentDate} />
-          <Calendar date={currentDate} />
+          <MonthView currentDate={currentDate} />
         </>
       )}
 
       {view === 'week' && (
         <>
           <WeekNavigator currentDate={currentDate} setCurrentDate={setCurrentDate} />
-          <CalendarWeek date={currentDate} />
+          <WeekView date={currentDate} />
         </>
       )}
 
       {view === 'day' && (
         <>
           <DayNavigator currentDate={currentDate} setCurrentDate={setCurrentDate} />
-          {/* ここに日表示の詳細を書く */}
-          <div className="text-center text-gray-600">
-            
-          </div>
+          <DayView date={currentDate} />
         </>
       )}
     </main>
